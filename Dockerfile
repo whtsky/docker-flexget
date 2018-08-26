@@ -15,6 +15,23 @@ RUN chmod -v +x \
     /etc/cont-init.d/*  \
     /etc/services.d/*/run
 
+# Install libtorrent-rasterbar, a dependency for both
+# flexget plugin `convert_magnet`. as well as deluge.
+RUN apk add --update --no-cache --virtual=build-dependencies \
+    apk-tools
+
+# Dependency for libtorrent-rasterbar.
+RUN apk add --no-cache \
+    boost-python@edge \
+    boost-system@edge \
+    libressl-dev@edge
+
+# libtorrent-rasterbar contains the python bindings libtorrent.
+RUN apk add --no-cache \
+    libtorrent-rasterbar@testing
+
+RUN pip install -U pip setuptools>=36 urllib3[socks] flexget
+
 # Ports and volumes.
 EXPOSE 5050/tcp
 VOLUME /config

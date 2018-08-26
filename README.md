@@ -1,8 +1,9 @@
-# cpoppema/docker-flexget
+# whtsky/docker-flexget
 
 Read all about FlexGet [here](http://www.flexget.com/#Description).
 
-If you do not have a configuration already, you can look around starting off with something like this [config.yml](https://github.com/cpoppema/docker-flexget/blob/master/sample_config.yml):
+If you do not have a configuration already, you can look around starting off with something like this [config.yml](https://github.com/whtsky/docker-flexget/blob/master/sample_config.yml):
+
 ```
 web_server: yes
 
@@ -17,6 +18,7 @@ tasks:
     series:
       - My Favorite Show
 ```
+
 Put this file in your data/config folder as `config.yml`.
 
 For a much better FlexGet config.yml example take a look at the bottom of [this page](http://flexget.com/Cookbook/Series/SeriesPresetMultipleRSStoTransmission).
@@ -33,21 +35,21 @@ docker create \
     -p 5050:5050 \
     -v <path to data>:/config \
     -v <path to downloads>:/downloads \
-    cpoppema/docker-flexget
+    whtsky/docker-flexget
 ```
 
 For shell access whilst the container is running do `docker exec -it flexget /bin/bash`.
 
 **Parameters**
 
-* `-e PGID` for GroupID - see below for explanation
-* `-e PUID` for UserID - see below for explanation
-* `-e WEB_PASSWD` for the Web UI password - see below for explanation
-* `-e TORRENT_PLUGIN` for the torrent plugin you need, e.g. "transmission" or "deluge"
-* `-e FLEXGET_LOG_LEVEL` for logging level - see below for explanation
-* `-p 5050` for Web UI port - see below for explanation
-* `-v /config` - Location of FlexGet config.yml (DB files will be created on startup and also live in this directory)
-* `-v /downloads` - location of downloads on disk
+- `-e PGID` for GroupID - see below for explanation
+- `-e PUID` for UserID - see below for explanation
+- `-e WEB_PASSWD` for the Web UI password - see below for explanation
+- `-e TORRENT_PLUGIN` for the torrent plugin you need, e.g. "transmission" or "deluge"
+- `-e FLEXGET_LOG_LEVEL` for logging level - see below for explanation
+- `-p 5050` for Web UI port - see below for explanation
+- `-v /config` - Location of FlexGet config.yml (DB files will be created on startup and also live in this directory)
+- `-v /downloads` - location of downloads on disk
 
 **Torrent plugin: Transmission**
 
@@ -109,8 +111,9 @@ Part of what makes this container work so well is by allowing you to specify you
 
 ## Updates / Monitoring
 
-* Upgrade to the latest version of FlexGet simply `docker restart flexget`.
-* Monitor the logs of the container in realtime `docker logs -f flexget`.
+- Upgrade to the latest version of FlexGet simply `docker restart flexget`.
+- Monitor the logs of the container in realtime `docker logs -f flexget`.
 
 **Credits**
-* [linuxserver.io](https://github.com/linuxserver) for providing awesome docker containers.
+
+- [linuxserver.io](https://github.com/linuxserver) for providing awesome docker containers.

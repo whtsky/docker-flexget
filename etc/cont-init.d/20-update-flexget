@@ -1,29 +1,3 @@
 #!/usr/bin/with-contenv bash
 
-pip install -U pip
-# Make sure to install setuptools version >=36 to avoid a race condition, see:
-# https://github.com/pypa/setuptools/issues/951
-pip install -U setuptools>=36
-pip install -U urllib3[socks]
-pip install -U chardet
-pip install -U irc_bot
-pip install -U rarfile
-
-
-# Install libtorrent-rasterbar, a dependency for both
-# flexget plugin `convert_magnet`. as well as deluge.
-apk add --update --no-cache --virtual=build-dependencies \
-    apk-tools
-
-# Dependency for libtorrent-rasterbar.
-apk add --no-cache \
-    boost-python@edge \
-    boost-system@edge \
-    libressl-dev@edge
-
-# libtorrent-rasterbar contains the python bindings libtorrent.
-apk add --no-cache \
-    libtorrent-rasterbar@testing
-
-# Install flexget last (it might force specific versions of other packages).
 pip install -U flexget
